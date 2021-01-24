@@ -1,0 +1,13 @@
+<style scoped><%= styles %></style>
+
+<h2 class="category-title"><%= category.title %></h2>
+<div class="video-list">
+  <%-
+  videos
+    .filter(video => category.videos.includes(video.id))
+    .map(video => {
+      return render('components/video/video.ejs', { video })
+    })
+  %>
+</div>
+

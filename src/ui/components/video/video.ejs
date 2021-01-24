@@ -1,0 +1,12 @@
+<style scoped><%= styles %></style>
+<a href="/<%= video.id %>">
+<div class="video">
+    <img height="200" width="300" class="video__poster" src="<%= '/assets/' + video.poster %>">
+        <div class="video__length"></div>
+    </img>
+    <p class="video__title"><%= video.title %></p>
+    <p class="video__time"><%= video.fromNow %></p>
+</div>
+</a>
+<!--<pre class="video"><%- JSON.stringify(video, null, 2)%></pre>-->
+

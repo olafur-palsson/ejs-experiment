@@ -1,0 +1,10 @@
+<style scoped><%= styles %></style>
+<div class="player">
+    <video controls class="player__video" src="<%= '/assets/' + video.video %>">
+        <div class="video__length"></div>
+    </video>
+    <p class="video__title"><%= video.title %></p>
+    <p class="video__title"><%= video.description %></p>
+    <p class="video__time"><%= video.fromNow %></p>
+</div>
+

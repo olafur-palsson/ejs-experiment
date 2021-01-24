@@ -1,0 +1,10 @@
+.video {
+  background-color: #00b7ff;
+  margin: 10px;
+  max-width: 320px;
+
+  &__title {
+    font-weight: 700;
+    text-overflow: ellipsis;
+  }
+}

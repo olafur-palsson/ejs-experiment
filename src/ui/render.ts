@@ -7,15 +7,15 @@ export const render = (
   data?: any
 ) => {
   const filePath = `${__dirname}/${templatePath}`
-  const relative = (p) => {
-    return `${__dirname}/${p}`
-  }
-  const stylePath = `${path.relative(process.cwd(), __dirname)}/${data?.stylePath || 'style.css'}`
+  const stylePath = `${path.dirname(filePath)}/${data?.stylePath || 'style.css'}`
+  const styleExists = fs.existsSync(stylePath)
+  const styles = styleExists ? fs.readFileSync(stylePath, 'utf8') : ''
   const template = fs.readFileSync(filePath, 'utf8')
-  return ejs.render(template, {
-    ...data,
-    stylePath,
-    p: relative,
-    render
-  })
+  return ejs.render(`
+    ${template}`,
+    {
+      ...data,
+      styles,
+      render
+    })
 }

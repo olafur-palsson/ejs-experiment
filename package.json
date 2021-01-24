@@ -6,8 +6,9 @@
     "start": "nodemon app.js last-build.txt",
     "autobuild": "watch -f '**/*.ts' -f '**/*.ejs' -f '**/*.scss' -c 'npm run build'",
     "clean": "rimraf dist",
-    "compile": "tsc && sass src",
-    "copy": "cpx 'src/**/*.{scss,ejs,json}' dist",
+    "compile": "npm run lint && tsc && sass src",
+    "lint": "eslint **/*.ts --fix && stylelint **/*.scss --fix",
+    "copy": "cpx 'src/**/*.{css,ejs,json}' dist",
     "build": "npm run clean && npm run compile && npm run copy && date-now > last-build.txt",
     "test": "ava-ts test/*.test.ts"
   },
@@ -15,22 +16,30 @@
     "date-now-cli": "^1.1.0",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "moment": "^2.29.1",
     "morgan": "~1.9.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.5.4",
-    "date-now-cli": "^1.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "@typescript-eslint/parser": "^4.14.0",
     "ava": "^3.15.0",
     "ava-ts": "^0.25.2",
     "copyfiles": "^2.4.1",
     "cpx": "^1.5.0",
+    "date-now-cli": "^1.1.0",
+    "eslint": "^7.18.0",
     "node-sass": "^5.0.0",
     "nodemon": "^2.0.7",
     "rimraf": "^3.0.2",
     "sass": "^1.32.5",
+    "stylelint": "^13.9.0",
+    "stylelint-config-sass-guidelines": "^7.1.0",
+    "stylelint-config-standard": "^20.0.0",
     "supertest": "^6.1.1",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3",
+    "typescript-eslint": "0.0.1-alpha.0",
     "watch-cli": "^0.2.3"
   }
 }

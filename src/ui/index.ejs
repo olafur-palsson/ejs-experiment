@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <% include(p('./head.ejs')) %>
+  <%- render('head.ejs', { title }) %>
+  <style scoped><%= styles %></style>
   <body>
-
-    <h1><%= process.cwd() %></h1>
-    <p>Welcome to <%= title %></p>
-
-    <% for (const video of videos) { %>
-      <%- render('/videos/video.ejs', { video }) %>
-    <% } %>
-
+    <h1>Welcome to <%= title %></h1>
+    <%- categories
+      .map(category => render('/components/video-list/video-list.ejs', { category, videos }))
+      .join('') %>
   </body>
 </html>

@@ -4,24 +4,25 @@ import * as path from 'path'
 import logger from 'morgan'
 
 
-var app = express();
 
 const PORT = 3000
 
-const startServer = () => {
-// view engine setup
+const startServer = (): express.Express => {
+  const app = express();
   app.use(logger('dev'));
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(express.static(path.join(__dirname, 'public')));
 
   app.use('/', uiApp);
+  app.use('/assets', express.static('public'));
 
-// error handler
-  app.use(function(err, req, res, next) {
+  // On-error
+  app.use((err, req, res, next) => {
     res
       .status(500)
       .send(err.stack)
+    next()
   });
 
   app.listen(PORT, () => {
