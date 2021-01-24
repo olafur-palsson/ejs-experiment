@@ -3,4 +3,5 @@ node_modules
 last-build.txt
 **/*.map
 **/*.css
+.idea
 
