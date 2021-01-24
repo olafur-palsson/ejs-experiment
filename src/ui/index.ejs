@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <% include(p('./head.ejs')) %>
+  <body>
+
+    <h1><%= process.cwd() %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <% for (const video of videos) { %>
+      <%- render('/videos/video.ejs', { video }) %>
+    <% } %>
+
+  </body>
+</html>
